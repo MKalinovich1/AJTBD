@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "env": {}
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-fetch"],
+      "env": {}
+    }
+  }
+}
