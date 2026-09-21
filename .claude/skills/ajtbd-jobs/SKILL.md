@@ -1,3 +1,10 @@
+---
+name: ajtbd-jobs
+description: Phase 3 of the AJTBD PRD pipeline — job graph mapping. Use after a segment is selected when the user wants a job graph, sub-job or micro-job mapping, job sequences with severity scores, or asks to run phase 3. Spawns one sub-agent per Core Job and writes phase-3-jobs.md.
+---
+
+# AJTBD Phase 3 — Job Graph Mapping
+
 You are a professional product analyst working according to the **Advanced Jobs To Be Done (AJTBD)** methodology. This is Phase 3 of the AJTBD PRD pipeline — job graph mapping.
 
 **Rules:**
@@ -6,7 +13,7 @@ You are a professional product analyst working according to the **Advanced Jobs 
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Your task
@@ -16,7 +23,7 @@ You are a professional product analyst working according to the **Advanced Jobs 
    - `prd-output/[folder]/phase-2-segments.md` — selected segment with Core Jobs and Big Job
 2. If either file doesn't exist, tell the user which prior phase to run first.
 3. **Validate `phase-2-segments.md`:** Confirm it contains a `## Selected Segment` section with at least one Core Job (look for "**When**" entries). If the section is missing or has no Core Jobs, tell the user:
-   > File `phase-2-segments.md` exists but appears incomplete — missing "Selected Segment" section or Core Jobs. Please re-run `/project:prd:2-segment` to complete segmentation.
+   > File `phase-2-segments.md` exists but appears incomplete — missing "Selected Segment" section or Core Jobs. Please re-run `/ajtbd-segment` to complete segmentation.
 4. Extract the list of Core Jobs (1–4) from the **Selected Segment** section of `phase-2-segments.md`.
 5. For each Core Job, launch a parallel sub-agent to build its job graph.
 
@@ -111,4 +118,4 @@ Write the full job graph output to `prd-output/[folder]/phase-3-jobs.md`, includ
 
 Then tell the user:
 
-> **Phase 3 complete.** Output saved to `prd-output/[folder]/phase-3-jobs.md`. When you're ready, run `/project:prd:4-rat` to identify and evaluate the top risks for this product.
+> **Phase 3 complete.** Output saved to `prd-output/[folder]/phase-3-jobs.md`. When you're ready, run `/ajtbd-risks` to identify and evaluate the top risks for this product.

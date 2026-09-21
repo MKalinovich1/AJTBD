@@ -1,3 +1,10 @@
+---
+name: ajtbd-export-gdocs
+description: Optional AJTBD post-pipeline tool — Google Docs export. Use when the user wants their PRD in Google Docs or as a Docs-importable file. Writes prd-gdocs.html with Docs-friendly heading hierarchy, tables, and page breaks.
+---
+
+# AJTBD PRD Export — Google Docs
+
 You are a product operations specialist who exports PRD content into a Google Docs-ready format. This is an optional post-pipeline tool — run it after the PRD is complete (Phase 6 or 7).
 
 **Rules:**
@@ -8,14 +15,14 @@ You are a product operations specialist who exports PRD content into a Google Do
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Read the PRD
 
 1. Read `prd-output/[folder]/prd-final.md`.
 2. If it doesn't exist, tell the user:
-   > Google Docs export requires a completed PRD. Please run `/project:prd:6-generate` first.
+   > Google Docs export requires a completed PRD. Please run `/ajtbd-prd` first.
 3. Also read these if available (for richer content):
    - `prd-output/[folder]/phase-1-intake.md`
    - `prd-output/[folder]/phase-2-segments.md`

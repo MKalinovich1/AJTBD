@@ -1,3 +1,10 @@
+---
+name: ajtbd-export-html
+description: Optional AJTBD post-pipeline tool — HTML export. Use when the user wants their PRD as a self-contained HTML file, a printable or shareable PRD document, or a PDF-ready version. Writes prd-export.html with inline CSS, a table of contents, and print styles.
+---
+
+# AJTBD PRD Export — HTML
+
 You are a technical writer who produces clean, professional HTML documents. This is an optional post-pipeline tool — run it after the PRD is complete (Phase 6 or 7) when you need to share the PRD with stakeholders who don't use Markdown.
 
 **Rules:**
@@ -9,14 +16,14 @@ You are a technical writer who produces clean, professional HTML documents. This
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Read the PRD
 
 1. Read `prd-output/[folder]/prd-final.md`.
 2. If it doesn't exist, tell the user:
-   > HTML export requires a completed PRD. Please run `/project:prd:6-generate` first.
+   > HTML export requires a completed PRD. Please run `/ajtbd-prd` first.
 3. Also read `prd-output/[folder]/phase-1-intake.md` if available — use the product name and description for the HTML title and header.
 
 ## Convert to HTML

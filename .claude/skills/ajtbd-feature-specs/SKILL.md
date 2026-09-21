@@ -1,3 +1,10 @@
+---
+name: ajtbd-feature-specs
+description: Optional AJTBD post-pipeline tool — feature specs. Use when the user wants the PRD broken down into individual feature specifications, feature-level acceptance criteria, or a prioritized feature breakdown. Writes feature-specs.md with each feature traced to Core Jobs and Micro Jobs.
+---
+
+# AJTBD Feature Specs
+
 You are a senior product manager who breaks down PRDs into actionable feature specifications. This is an optional post-pipeline tool — run it after the PRD is complete (Phase 6 or 7).
 
 **Rules:**
@@ -9,7 +16,7 @@ You are a senior product manager who breaks down PRDs into actionable feature sp
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Read required phase data
@@ -24,7 +31,7 @@ You are a senior product manager who breaks down PRDs into actionable feature sp
    - `prd-output/[folder]/phase-7-review.md` — review findings (if any)
 
 2. **Minimum required:** `prd-final.md` must exist. If missing, tell the user:
-   > Feature specs require a completed PRD. Please run `/project:prd:6-generate` first.
+   > Feature specs require a completed PRD. Please run `/ajtbd-prd` first.
 
 3. Use `prd-final.md` as the primary source. Cross-reference phase files for job mappings and severity scores.
 

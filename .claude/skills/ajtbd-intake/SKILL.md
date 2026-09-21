@@ -1,3 +1,10 @@
+---
+name: ajtbd-intake
+description: Phase 1 of the AJTBD PRD pipeline — product intake. Use when the user wants to start a new PRD, begin AJTBD analysis for a product idea, resume work on an existing product in prd-output/, or asks to run phase 1. Collects product name, description, B2B/B2C track, stage, and target market, then writes phase-1-intake.md.
+---
+
+# AJTBD Phase 1 — Product Intake
+
 You are a senior product strategist working according to the **Advanced Jobs To Be Done (AJTBD)** methodology. This is Phase 1 of the AJTBD PRD pipeline — product intake.
 
 **Rules:**
@@ -21,7 +28,9 @@ You are a senior product strategist working according to the **Advanced Jobs To 
 
 3. **If no existing products are found**, proceed directly with the intake flow below.
 
-**User input (for new product):** $ARGUMENTS
+**User input (for new product):** use whatever the user supplied when invoking this skill
+(for example a product name in `/ajtbd-intake My Cool App`, or anything they described in the
+surrounding conversation) as the starting point. If nothing was supplied, ask for it.
 
 ## Information to collect (new product only)
 
@@ -54,4 +63,4 @@ You are a senior product strategist working according to the **Advanced Jobs To 
 5. Write the folder name to `prd-output/.current` (overwriting any previous value). This marker tells all subsequent phases which product to work on.
 6. Tell the user:
 
-> **Phase 1 complete.** Output saved to `prd-output/[folder-name]/phase-1-intake.md`. When you're ready, run `/project:prd:2-segment` to identify your most attractive market segments.
+> **Phase 1 complete.** Output saved to `prd-output/[folder-name]/phase-1-intake.md`. When you're ready, run `/ajtbd-segment` to identify your most attractive market segments.

@@ -1,3 +1,10 @@
+---
+name: ajtbd-risks
+description: Phase 4 of the AJTBD PRD pipeline — Riskiest Assumption Testing. Use after job mapping when the user wants risk assessment, RAT risk cards, riskiest assumptions, or asks to run phase 4. Runs competitive and market-validation research sub-agents, then writes 5 evidence-calibrated risk cards with P x I scoring to phase-4-risks.md.
+---
+
+# AJTBD Phase 4 — Riskiest Assumption Test
+
 You are an expert in Riskiest Assumption Testing (RAT) and product launches in the **AJTBD** paradigm. This is Phase 4 of the AJTBD PRD pipeline — risk assessment.
 
 **Rules:**
@@ -7,7 +14,7 @@ You are an expert in Riskiest Assumption Testing (RAT) and product launches in t
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Your task
@@ -18,8 +25,8 @@ You are an expert in Riskiest Assumption Testing (RAT) and product launches in t
    - `prd-output/[folder]/phase-3-jobs.md` — job graphs
 2. If any file doesn't exist, tell the user which prior phase to run first.
 3. **Validate prior phase files:**
-   - `phase-2-segments.md` must contain a `## Selected Segment` section. If missing, tell the user to re-run `/project:prd:2-segment`.
-   - `phase-3-jobs.md` must contain at least one `### Core Job` header. If missing, tell the user to re-run `/project:prd:3-jobs`.
+   - `phase-2-segments.md` must contain a `## Selected Segment` section. If missing, tell the user to re-run `/ajtbd-segment`.
+   - `phase-3-jobs.md` must contain at least one `### Core Job` header. If missing, tell the user to re-run `/ajtbd-jobs`.
 4. Auto-fill the RAT input block from the accumulated data and produce 5 risk cards.
 
 ## Auto-fill the RAT Input Block
@@ -188,4 +195,4 @@ Write the full RAT output to `prd-output/[folder]/phase-4-risks.md`, including a
 
 Then tell the user:
 
-> **Phase 4 complete.** Output saved to `prd-output/[folder]/phase-4-risks.md`. When you're ready, run `/project:prd:5-questions` to gather the remaining context for your PRD.
+> **Phase 4 complete.** Output saved to `prd-output/[folder]/phase-4-risks.md`. When you're ready, run `/ajtbd-questions` to gather the remaining context for your PRD.

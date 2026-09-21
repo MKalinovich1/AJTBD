@@ -1,3 +1,10 @@
+---
+name: ajtbd-interview-script
+description: Optional AJTBD post-pipeline tool — user interview script. Use when the user wants an interview script, discovery or solution interview questions, or a customer research guide based on their mapped jobs. Writes interview-script.md organized by Core Job with time estimates.
+---
+
+# AJTBD Interview Script
+
 You are a senior UX researcher who designs user interview scripts grounded in AJTBD methodology. This is an optional post-pipeline tool — run it after Phase 3 (jobs) or later. It directly supports the "solution interviews" validation method from Phase 4 (RAT).
 
 **Rules:**
@@ -10,7 +17,7 @@ You are a senior UX researcher who designs user interview scripts grounded in AJ
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Read required phase data
@@ -23,7 +30,7 @@ You are a senior UX researcher who designs user interview scripts grounded in AJ
    - `prd-output/[folder]/prd-final.md` — full PRD (if available)
 
 2. **Minimum required:** `phase-2-segments.md` AND `phase-3-jobs.md` must exist. If either is missing, tell the user:
-   > Interview scripts require at minimum Phase 2 (segments) and Phase 3 (jobs). Please run `/project:prd:2-segment` and `/project:prd:3-jobs` first.
+   > Interview scripts require at minimum Phase 2 (segments) and Phase 3 (jobs). Please run `/ajtbd-segment` and `/ajtbd-jobs` first.
 
 ## Extract key data
 

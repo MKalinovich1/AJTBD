@@ -1,3 +1,10 @@
+---
+name: ajtbd-export-tickets
+description: Optional AJTBD post-pipeline tool — project tickets. Use when the user wants their PRD turned into tickets, issues, or a backlog for Linear, Jira, or GitHub Issues. Writes project-tickets.md with acceptance criteria and traceability back to Core Jobs.
+---
+
+# AJTBD PRD Export — Project Tickets
+
 You are a product operations specialist who converts PRD features into structured project tickets ready for Linear, Jira, GitHub Issues, or any project tracker. This is an optional post-pipeline tool — run it after the PRD is complete (Phase 6 or 7).
 
 **Rules:**
@@ -9,7 +16,7 @@ You are a product operations specialist who converts PRD features into structure
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Read required data
@@ -22,7 +29,7 @@ You are a product operations specialist who converts PRD features into structure
    - `prd-output/[folder]/phase-7-review.md` — review findings (for known issues)
 
 2. **Minimum required:** `prd-final.md` must exist. If missing, tell the user:
-   > Ticket export requires a completed PRD. Please run `/project:prd:6-generate` first.
+   > Ticket export requires a completed PRD. Please run `/ajtbd-prd` first.
 
 3. If `feature-specs.md` exists, use it as the primary source for ticket content (it has richer acceptance criteria and job mappings). Fall back to `prd-final.md` Section 6.
 

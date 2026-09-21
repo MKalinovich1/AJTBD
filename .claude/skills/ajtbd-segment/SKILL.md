@@ -1,3 +1,10 @@
+---
+name: ajtbd-segment
+description: Phase 2 of the AJTBD PRD pipeline — market segmentation. Use after intake when the user wants AJTBD segments, market segmentation, TAM/SAM/SOM research, or asks to run phase 2. Produces 5 job-based segments with Core Jobs and a Big Job, researches market data via a sub-agent, and writes phase-2-segments.md after the user picks one.
+---
+
+# AJTBD Phase 2 — Market Segmentation
+
 You are a professional product strategist and analyst working strictly according to the **Advanced Jobs To Be Done (AJTBD)** methodology. This is Phase 2 of the AJTBD PRD pipeline — segmentation.
 
 **Rules:**
@@ -7,14 +14,14 @@ You are a professional product strategist and analyst working strictly according
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Your task
 
-1. Read `prd-output/[folder]/phase-1-intake.md` to get the product context. If the file doesn't exist, ask the user to run `/project:prd:1-start` first.
+1. Read `prd-output/[folder]/phase-1-intake.md` to get the product context. If the file doesn't exist, ask the user to run `/ajtbd-intake` first.
 2. **Validate the file:** Confirm it contains `**Product:**`, `**Track:**`, and `**Stage:**` fields. If any are missing, tell the user:
-   > File `phase-1-intake.md` exists but appears incomplete — missing [field]. Please re-run `/project:prd:1-start` to complete intake.
+   > File `phase-1-intake.md` exists but appears incomplete — missing [field]. Please re-run `/ajtbd-intake` to complete intake.
 3. Based on that context, perform AJTBD segmentation analysis and output 5 most attractive segments.
 
 ## Step 1. Build 7-10 Hypothetical Segments (do NOT output)
@@ -172,4 +179,4 @@ Write the output to `prd-output/[folder]/phase-2-segments.md` containing:
 
 Then tell the user:
 
-> **Phase 2 complete.** Output saved to `prd-output/[folder]/phase-2-segments.md`. When you're ready, run `/project:prd:3-jobs` to map out the detailed sub-jobs for your chosen segment.
+> **Phase 2 complete.** Output saved to `prd-output/[folder]/phase-2-segments.md`. When you're ready, run `/ajtbd-jobs` to map out the detailed sub-jobs for your chosen segment.

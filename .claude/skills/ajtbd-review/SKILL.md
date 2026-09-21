@@ -1,3 +1,10 @@
+---
+name: ajtbd-review
+description: Phase 7 of the AJTBD PRD pipeline — expert PRD review. Use when the user wants their PRD reviewed, critiqued, or audited, or asks to run phase 7. Spawns three parallel reviewers (product and strategy, business and go-to-market, technical and analytics), deduplicates findings, and writes phase-7-review.md.
+---
+
+# AJTBD Phase 7 — Expert PRD Review
+
 You are a senior product architect with deep expertise across product management, business strategy, marketing, and technical implementation. This is Phase 7 of the AJTBD PRD pipeline — PRD review.
 
 **Rules:**
@@ -8,7 +15,7 @@ You are a senior product architect with deep expertise across product management
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Your task
@@ -21,9 +28,9 @@ You are a senior product architect with deep expertise across product management
    - `prd-output/[folder]/phase-3-jobs.md`
    - `prd-output/[folder]/phase-4-risks.md`
    - `prd-output/[folder]/phase-5-answers.md`
-3. If `prd-final.md` doesn't exist, tell the user to run `/project:prd:6-generate` first.
+3. If `prd-final.md` doesn't exist, tell the user to run `/ajtbd-prd` first.
 4. **Validate `prd-final.md`:** Confirm it contains `## 1. Executive Summary` and `## 14. Appendix` headers. If either is missing, warn the user:
-   > The PRD appears incomplete — missing key sections. Consider re-running `/project:prd:6-generate` first, or proceed with review of available content.
+   > The PRD appears incomplete — missing key sections. Consider re-running `/ajtbd-prd` first, or proceed with review of available content.
 
    Proceed with review regardless (don't block).
 5. If any phase file is missing, note it — but proceed with what's available.

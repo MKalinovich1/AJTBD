@@ -2,13 +2,13 @@
 
 **Turn a product idea into a professional, research-backed PRD in minutes — not weeks.**
 
-An AI-powered pipeline that applies the **Advanced Jobs To Be Done (AJTBD)** methodology to generate comprehensive Product Requirements Documents. Runs entirely inside [Claude Code](https://docs.anthropic.com/en/docs/claude-code) using slash commands, with parallel AI agents that research your market, map customer jobs, assess risks, and produce a 14-section PRD.
+An AI-powered pipeline that applies the **Advanced Jobs To Be Done (AJTBD)** methodology to generate comprehensive Product Requirements Documents. Runs entirely inside [Claude Code](https://docs.anthropic.com/en/docs/claude-code) as **Agent Skills**, with parallel AI agents that research your market, map customer jobs, assess risks, and produce a 14-section PRD.
 
 ---
 
 ## How It Works
 
-The pipeline takes your product idea through 7 structured phases. Each phase builds on the previous one, and the AI carries all context forward automatically. You run one slash command at a time — the AI does the heavy lifting.
+The pipeline takes your product idea through 7 structured phases. Each phase is a skill: Claude picks the right one when you describe what you want, or you invoke it by name. Each phase builds on the previous one, and the AI carries all context forward automatically.
 
 ---
 
@@ -16,43 +16,43 @@ The pipeline takes your product idea through 7 structured phases. Each phase bui
 
 ### Phase 1 — Product Intake
 ```
-/project:prd:1-start My Cool App
+/ajtbd-intake My Cool App
 ```
 Collects your product name, description, B2B/B2C classification, current stage, and target market. Creates a dedicated folder for all outputs. Supports resuming existing products.
 
 ### Phase 2 — Market Segmentation
 ```
-/project:prd:2-segment
+/ajtbd-segment
 ```
 Generates **5 AJTBD market segments** — each defined by shared jobs and execution criteria, not demographics. A sub-agent performs live web research to ground TAM/SAM/SOM estimates, identify competitors, and find pricing benchmarks. You pick the segment that fits best.
 
 ### Phase 3 — Job Mapping
 ```
-/project:prd:3-jobs
+/ajtbd-jobs
 ```
 For each Core Job in your chosen segment, a **parallel sub-agent** maps the complete sequence of sub-jobs — from initial trigger through completion. Each sub-job includes context, triggers, success criteria, and problem severity scores. All agents run simultaneously for speed.
 
 ### Phase 4 — Risk Assessment (RAT)
 ```
-/project:prd:4-rat
+/ajtbd-risks
 ```
 Produces **5 ranked risk cards** using the Riskiest Assumption Testing framework. Two sub-agents run in parallel: one researches competitors (pricing, user sentiment, failure stories) and one researches market signals (demand trends, regulations, recent funding). Risk scores are calibrated with real evidence.
 
 ### Phase 5 — Clarifying Questions
 ```
-/project:prd:5-questions
+/ajtbd-questions
 ```
 Asks **20 targeted questions** across 7 categories (vision, users, scope, tech, UX, business, timeline). Questions already answered by prior phases are pre-filled — you only answer what's genuinely new.
 
 ### Phase 6 — PRD Generation
 ```
-/project:prd:6-generate
+/ajtbd-prd
 ```
 Synthesizes all prior phases into a **14-section PRD**: executive summary, problem statement, target segment, job map, risk assessment, feature requirements, NFRs, success metrics, MVP phasing, technical architecture, go-to-market strategy, timeline, open questions, and appendix.
 
 ### Phase 7 — Expert Review
 ```
-/project:prd:7-review
+/ajtbd-review
 ```
 Three expert AI agents review your PRD **simultaneously** from different angles:
 1. **Product & Strategy** — completeness, AJTBD adherence, scope realism
@@ -67,15 +67,15 @@ Findings are deduplicated, prioritized (Critical / Improvement / Polish), and yo
 
 After completing the pipeline, generate additional deliverables:
 
-| Command | Output |
-|---------|--------|
-| `/project:extras:landing-page` | AJTBD-structured landing page copy (9 sections) |
-| `/project:extras:prd-to-features` | Individual feature specs with job mapping & acceptance criteria |
-| `/project:extras:interview-script` | User interview script organized by Core Job |
-| `/project:extras:prd-export-html` | Self-contained HTML with table of contents & print styles |
-| `/project:extras:prd-export-notion` | Notion-formatted export (pushes directly if Notion MCP is configured) |
-| `/project:extras:prd-export-gdocs` | Google Docs-compatible HTML for import |
-| `/project:extras:prd-export-tickets` | Structured project tickets for Linear / Jira / GitHub Issues |
+| Skill | Output |
+|-------|--------|
+| `/ajtbd-landing-page` | AJTBD-structured landing page copy (9 sections) |
+| `/ajtbd-feature-specs` | Individual feature specs with job mapping & acceptance criteria |
+| `/ajtbd-interview-script` | User interview script organized by Core Job |
+| `/ajtbd-export-html` | Self-contained HTML with table of contents & print styles |
+| `/ajtbd-export-notion` | Notion-formatted export (pushes directly if Notion MCP is configured) |
+| `/ajtbd-export-gdocs` | Google Docs-compatible HTML for import |
+| `/ajtbd-export-tickets` | Structured project tickets for Linear / Jira / GitHub Issues |
 
 ---
 
@@ -107,8 +107,6 @@ Traditional PRDs start with features or user stories. AJTBD starts with **jobs**
 ### Prerequisites
 
 - [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and configured
-- Node.js (for MCP servers)
-- Python + `uvx` (for the fetch MCP server)
 
 ### Setup
 
@@ -118,18 +116,20 @@ Traditional PRDs start with features or user stories. AJTBD starts with **jobs**
    cd ajtbd-prd-generator
    ```
 
-2. The two bundled MCP servers (sequential-thinking and fetch) will start automatically when needed. No additional setup required.
-
-3. Start the pipeline:
+2. Start the pipeline:
    ```bash
    claude
    ```
-   Then in Claude Code:
+   Then in Claude Code, either describe what you want ("start an AJTBD PRD for My Product Name")
+   and Claude will pick the right skill, or invoke it by name:
    ```
-   /project:prd:1-start My Product Name
+   /ajtbd-intake My Product Name
    ```
 
-4. Follow each phase in order. The AI will tell you which command to run next.
+3. Follow each phase in order. The AI will tell you which skill to run next.
+
+The skills live in `.claude/skills/` and are picked up automatically when you run `claude` from
+this repository — no installation step.
 
 ---
 
@@ -163,11 +163,7 @@ prd-output/
 
 ## Optional Integrations
 
-The pipeline includes two MCP servers out of the box (`.mcp.json`):
-- **Sequential Thinking** — structured reasoning for complex analysis
-- **Fetch** — enhanced web content extraction
-
-For exporting to external tools:
+The pipeline needs no MCP servers. For exporting to external tools, you can optionally add your own:
 
 ### Notion
 Push your PRD directly to Notion:
@@ -205,7 +201,7 @@ All phases follow these shared rules:
 - **No "pain" language** — AJTBD uses jobs, motivations, criteria, situations, and triggers
 - **US market default** — unless specified otherwise in Phase 1
 - **Skip / go back** — say "skip" to move past a phase or "go back" to redo one
-- **Phase continuity** — every phase reads prior outputs automatically; if a file is missing, you're told which command to run
+- **Phase continuity** — every phase reads prior outputs automatically; if a file is missing, you're told which skill to run
 
 ---
 

@@ -1,3 +1,10 @@
+---
+name: ajtbd-questions
+description: Phase 5 of the AJTBD PRD pipeline — clarifying questions. Use after risk assessment when the user wants the 20 PRD clarifying questions, wants gaps filled before PRD generation, or asks to run phase 5. Pre-fills answers already known from prior phases and writes phase-5-answers.md.
+---
+
+# AJTBD Phase 5 — Clarifying Questions
+
 You are a senior PRD architect working according to the **Advanced Jobs To Be Done (AJTBD)** methodology. This is Phase 5 of the AJTBD PRD pipeline — clarifying questions.
 
 **Rules:**
@@ -6,7 +13,7 @@ You are a senior PRD architect working according to the **Advanced Jobs To Be Do
 ## Locate the active product
 
 1. Read `prd-output/.current` to get the current product folder name.
-2. If the file doesn't exist, tell the user to run `/project:prd:1-start` first.
+2. If the file doesn't exist, tell the user to run `/ajtbd-intake` first.
 3. All file paths below use `prd-output/[folder]/` as the base directory.
 
 ## Your task
@@ -24,7 +31,7 @@ You are a senior PRD architect working according to the **Advanced Jobs To Be Do
 
 Check that `phase-4-risks.md` contains at least 3 `### Risk` headers. If it appears incomplete, tell the user:
 
-> File `phase-4-risks.md` exists but appears incomplete — it has fewer than 3 risk cards. Please re-run `/project:prd:4-rat` to regenerate it.
+> File `phase-4-risks.md` exists but appears incomplete — it has fewer than 3 risk cards. Please re-run `/ajtbd-risks` to regenerate it.
 
 ## Triage questions
 
@@ -101,4 +108,4 @@ This way the user only actively answers questions that are genuinely new.
 
 Then tell the user:
 
-> **Phase 5 complete.** Output saved to `prd-output/[folder]/phase-5-answers.md`. When you're ready, run `/project:prd:6-generate` to produce your full PRD.
+> **Phase 5 complete.** Output saved to `prd-output/[folder]/phase-5-answers.md`. When you're ready, run `/ajtbd-prd` to produce your full PRD.
